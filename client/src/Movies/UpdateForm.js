@@ -58,6 +58,7 @@ const UpdateForm = props => {
         <div>
             <h2>Update Movie</h2>
             <form onSubmit={handleSubmit}>
+                <label>Title</label>
                 <input
                 type="text"
                 name="title"
@@ -66,6 +67,7 @@ const UpdateForm = props => {
                 value={movie.title}
                 />
                 <div className="baseline" />
+                <label>director</label>
 
                 <input
                 type="string"
@@ -75,6 +77,7 @@ const UpdateForm = props => {
                 value={movie.director}
                 />
                 <div className="baseline" />
+                <label>metascore</label>
 
                 <input
                 type="number"
@@ -84,9 +87,10 @@ const UpdateForm = props => {
                 value={movie.metascore}
                 />
                 <div className="baseline" />
+                <label>stars</label>
 
                 <input
-                type="array"
+                type="string"
                 name="starts"
                 onChange={changeHandler}
                 placeholder="starts"

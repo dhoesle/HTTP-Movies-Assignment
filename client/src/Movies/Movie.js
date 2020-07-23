@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 
 function Movie({ addToSavedList }) {
   const { push } = useHistory();
-
+  
   const [movie, setMovie] = useState(null);
   const params = useParams();
 
@@ -28,6 +28,19 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
+  
+  const handleDelete = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(res => {
+        console.log(res)
+        push('/');
+      })
+      .catch(err => console.log(err))
+
+  }
+
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
@@ -40,6 +53,9 @@ function Movie({ addToSavedList }) {
         className="edit-button"
       >
         Edit
+      </button>
+      <button onClick={handleDelete} className="md-button">
+        Delete
       </button>
     </div>
   );
